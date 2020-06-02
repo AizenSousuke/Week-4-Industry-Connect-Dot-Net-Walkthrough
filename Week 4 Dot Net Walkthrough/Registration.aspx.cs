@@ -113,6 +113,25 @@ namespace Week_4_Dot_Net_Walkthrough
                 if (data.Count > 0)
                 {
                     tbName.Text = data[1].ToString();
+                    switch (data[3].ToString())
+                    {
+                        case "Male":
+                            rbMale.Checked = true;
+                            rbFemale.Checked = false;
+                            rbNotApplicable.Checked = false;
+                            break;
+                        case "Female":
+                            rbMale.Checked = false;
+                            rbFemale.Checked = true;
+                            rbNotApplicable.Checked = false;
+                            break;
+                        default:
+                            rbFemale.Checked = false;
+                            rbFemale.Checked = false;
+                            rbNotApplicable.Checked = true;
+                            break;
+                    }
+                    list.SelectedValue = data[5].ToString();
                     Response.Write("Loaded past data.");
                 }
                 else

@@ -17,8 +17,6 @@ namespace Week_4_Dot_Net_Walkthrough.Services
         {
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.Connection = connection;
             System.Console.WriteLine(connection.ConnectionString);
         }
 
@@ -44,6 +42,8 @@ namespace Week_4_Dot_Net_Walkthrough.Services
                 '" + city + @"'-- City - varchar
             )";
 #pragma warning restore CA2100 // Review SQL queries for security vulnerabilities
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.Connection = connection;
         }
 
         public ArrayList Get(string email)
@@ -55,6 +55,8 @@ namespace Week_4_Dot_Net_Walkthrough.Services
                 dbo.Registration.Email = '" + email + @"'
             ";
 #pragma warning restore CA2100 // Review SQL queries for security vulnerabilities
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.Connection = connection;
             SqlDataReader reader = sqlCommand.ExecuteReader();
             Debug.WriteLine("Reader: " + reader.FieldCount);
             ArrayList data = new ArrayList();
@@ -86,6 +88,8 @@ namespace Week_4_Dot_Net_Walkthrough.Services
             WHERE
                 Email = '" + email + @"'";
 #pragma warning restore CA2100 // Review SQL queries for security vulnerabilities
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.Connection = connection;
         }
 
         public void Open()
